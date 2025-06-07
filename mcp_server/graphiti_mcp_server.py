@@ -331,7 +331,8 @@ class GraphitiLLMConfig(BaseModel):
             return OpenAIRerankerClient(client=client)
         else:
             llm_client_config = LLMConfig(
-                api_key=self.api_key, model=self.model, small_model=self.small_model
+                api_key=self.api_key, model=self.model, small_model=self.small_model,
+                base_url=os.environ.get("OPENAI_BASE_URL")
             )
             return OpenAIRerankerClient(config=llm_client_config)
 
